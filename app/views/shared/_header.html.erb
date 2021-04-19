@@ -1,0 +1,11 @@
+<div class="col-md-12">
+    <div class="card-custom mb-4 shadow-sm text-center">
+      <div class="card-body">
+        <h2 class="card-title text-center"></h2>
+        <%= form_with url: root_path, skip_enforcing_utf8: true, method: :get do |form| %>
+          <%= form.hidden_field :and_to_update, value: true %>
+            <button type="submit" id="onLoading" class="btn btn-default">Atualize os dados</button>
+          <% end %>
+      </div>
+    </div>
+  </div>

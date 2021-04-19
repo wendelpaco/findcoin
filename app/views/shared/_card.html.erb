@@ -1,0 +1,35 @@
+<% if @coins.size > 0 %>
+  <% @coins.each do |coin| %>
+    <div class="col-md-3">
+      <div class="card-custom mb-3 shadow-sm my-card text-center">
+        <div class="card-body fix-card-body">
+          <div class="cmc_rank">
+            <%= coin.cmc_rank %>º
+            <span data-toggle="tooltip" data-placement="top" title="curtiu? :)" class="fa fa-thumbs-o-up" aria-hidden="true">🏆</span>
+          </div>
+          <p class="card-title mb-1 fix">          
+            <%= coin.slug.capitalize %>
+            (<span data-toggle="tooltip" data-placement="top" title="<%= coin.name %>"><%= coin.symbol %></span>)
+          </p>
+          <p class="p-0" style="font-size: 12px;">Preço atual: 
+            <span style="font-weight: bold;"><%= number_to_currency(coin.price,unit: "$") %></span>
+            <% if coin.status_price %>
+                <span title="valorizou">🟢</span>
+            <% else %>
+                <span title="desvalorizou">🔴</span>
+            <% end %>
+          </p>
+          <hr />
+          <p class="p-0" style="font-size: 12px; margin: 0;">Volume 24hr:
+            <span style="font-weight: bold;" ><%= number_to_currency(coin.volume_24h, precision: 0, unit: "$") %> 💸</span>
+          </p>
+          <p class="p-0" style="font-size: 12px;">Market Cap:
+            <span style="font-weight: bold;" ><%= number_to_currency(coin.market_cap, precision: 0, unit: "$") %> 💸</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+<p> show </p>
+<% end %>
